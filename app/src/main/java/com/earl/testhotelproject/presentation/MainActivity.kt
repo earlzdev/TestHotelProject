@@ -1,7 +1,8 @@
-package com.earl.testhotelproject
+package com.earl.testhotelproject.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.earl.testhotelproject.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
