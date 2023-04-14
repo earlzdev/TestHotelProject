@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val baseUrl = "http://45.12.19.184/"
+private const val baseUrl = "https://raw.githubusercontent.com/"
 
 fun buildNetworkService() : NetworkService {
     val interceptor = HttpLoggingInterceptor()

@@ -8,18 +8,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.lifecycle.lifecycleScope
+import com.earl.common.log
 import com.earl.coreui.BaseFragment
 import com.earl.hotel_search.databinding.FragmentSeatchHotelsBinding
 import com.earl.hotel_search.di.SearchHotelsComponentViewModel
 import com.earl.hotel_search.presentation.hotelDetails.HotelDetailsViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
 
     @Inject
-    internal lateinit var searchAirportsViewModelFactory: dagger.Lazy<HotelDetailsViewModel.Factory>
+    internal lateinit var searchAirportsViewModelFactory: dagger.Lazy<SearchHotelsViewModel.Factory>
 
-    private val viewModel: HotelDetailsViewModel by viewModels {
+    private val viewModel: SearchHotelsViewModel by viewModels {
         searchAirportsViewModelFactory.get()
     }
 
@@ -36,6 +40,12 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.hotels.onEach {
+            log("hotels -> $it")
+        }.launchIn(lifecycleScope)
+    }
 
+    companion object {
+        fun newInstance() = SearchHotelsFragment()
     }
 }

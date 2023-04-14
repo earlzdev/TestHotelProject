@@ -7,8 +7,9 @@ import com.earl.testhotelproject.di.DaggerAppComponent
 
 class HotelApp: Application() {
 
-    val appComponent: AppComponent by lazy {
+    private val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
+            .application(this)
             .build()
     }
 

@@ -56,6 +56,12 @@ dependencies {
     implementation LifecycleComponents.lifecycleRuntime
     implementation LifecycleComponents.serialization
 
+    // retrofit
+    implementation Retrofit.retrofit
+    implementation Retrofit.retrofitGsonConverter
+    implementation Retrofit.retrofitCoroutineAdapter
+    implementation Retrofit.okHttpLoggingInterceptor
+
     // tests
     implementation TestDependencies.junit
     implementation TestDependencies.androidJunit

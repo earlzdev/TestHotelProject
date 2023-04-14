@@ -13,6 +13,10 @@ import com.earl.hotel_search.databinding.FragmentHotelDetailsBinding
 import com.earl.hotel_search.di.SearchHotelsComponentViewModel
 import javax.inject.Inject
 
+/**
+ * можно вынeсти в отдельный feature module
+ */
+
 class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
 
     @Inject
