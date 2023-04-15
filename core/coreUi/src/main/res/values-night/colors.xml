@@ -10,5 +10,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="free_places_btn_color">#00952A</color>
     <color name="no_places_btn_color">#868686</color>
-    <color name="search_hotels_text_color">#FF000000</color>
+    <color name="search_hotels_text_color">#FFFFFFFF</color>
 </resources>

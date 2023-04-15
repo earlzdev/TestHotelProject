@@ -1,3 +1,7 @@
 <resources>
     <string name="hotel_title">Отель: %s</string>
+    <string name="distance_from_center_text">Расстояние от центра: %s км</string>
+    <string name="no_places">Мест нет</string>
+    <string name="free_places">Есть места</string>
+    <string name="hotels_search">Поиск отелей</string>
 </resources>

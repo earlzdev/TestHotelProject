@@ -4,10 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.earl.common.Feature
-import com.earl.common.log
 import com.earl.hotel_search.domain.Repository
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
@@ -22,7 +20,6 @@ class SearchHotelsViewModel(
             emit(repository.fetchHotels())
         } catch (e: Exception) {
             e.printStackTrace()
-            log("exception $e")
         }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
