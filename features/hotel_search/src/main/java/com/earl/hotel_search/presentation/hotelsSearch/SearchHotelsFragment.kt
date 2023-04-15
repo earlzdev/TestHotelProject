@@ -15,7 +15,7 @@ import com.earl.coreui.BaseFragment
 import com.earl.hotel_search.R
 import com.earl.hotel_search.databinding.FragmentSeatchHotelsBinding
 import com.earl.hotel_search.di.SearchHotelsComponentViewModel
-import com.earl.hotel_search.presentation.utils.HotelsRecyclerAdapter
+import com.earl.hotel_search.presentation.hotelsSearch.utils.HotelsRecyclerAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject

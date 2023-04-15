@@ -1,4 +1,4 @@
-package com.earl.hotel_search.presentation.utils
+package com.earl.hotel_search.presentation.hotelsSearch.utils
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
