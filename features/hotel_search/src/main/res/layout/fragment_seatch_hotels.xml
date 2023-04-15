@@ -15,19 +15,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <TextView
-        android:id="@+id/hotels_search"
-        android:layout_width="wrap_content"
+    <Toolbar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hotels_search"
-        android:textColor="@color/search_hotels_text_color"
-        android:textSize="16sp"
-        android:fontFamily="@font/roboto_mediumitalic"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/large"
-        android:layout_marginStart="@dimen/medium"
-        />
+        android:paddingVertical="4dp">
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/filter"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/sort"-->
+<!--            android:textColor="@color/search_hotels_text_color"-->
+<!--            android:fontFamily="@font/montserrat_regular"-->
+<!--            android:textSize="12sp"-->
+<!--            android:background="@drawable/filter_btn_background"-->
+<!--            android:padding="6dp"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:layout_marginEnd="@dimen/medium"-->
+<!--            />-->
+<!--        -->
+
+        <ImageButton
+            android:id="@+id/filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/medium"
+            android:src="@drawable/filter_icon"
+            android:background="@drawable/filter_btn_background"
+            android:padding="6dp"
+            />
+
+    </Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hotels_recycler"
@@ -35,7 +56,7 @@
         android:layout_height="0dp"
         tools:listitem="@layout/recycler_hotel_item"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/hotels_search"
+        app:layout_constraintTop_toBottomOf="@id/action_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

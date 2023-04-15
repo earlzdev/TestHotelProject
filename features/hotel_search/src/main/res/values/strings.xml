@@ -4,4 +4,7 @@
     <string name="no_places">Мест нет</string>
     <string name="free_places">Есть места</string>
     <string name="hotels_search">Поиск отелей</string>
+    <string name="sort">Sort</string>
+    <string name="distance_to_center">По расстоянию до центра</string>
+    <string name="by_free_places_amount">По количеству свободных мест</string>
 </resources>
