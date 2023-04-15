@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "org.jetbrains.kotlin.plugin.serialization" version "1.7.20"
 }
 
 android {
@@ -49,4 +50,7 @@ dependencies {
     // tests
     implementation TestDependencies.junit
     implementation TestDependencies.androidJunit
+
+    // serialization
+    implementation LifecycleComponents.serialization
 }
