@@ -10,7 +10,13 @@ import com.earl.hotel_search.R
 import com.earl.hotel_search.databinding.RecyclerHotelItemBinding
 import com.earl.hotel_search.domain.models.Hotel
 
-class HotelsRecyclerAdapter: ListAdapter<Hotel, HotelsRecyclerAdapter.ItemViewHolder>(Diff) {
+interface OnHotelClickListener {
+    fun onHotelClick(hotelId: Int)
+}
+
+class HotelsRecyclerAdapter(
+    private val clickListener: OnHotelClickListener
+): ListAdapter<Hotel, HotelsRecyclerAdapter.ItemViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding = RecyclerHotelItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,7 +24,11 @@ class HotelsRecyclerAdapter: ListAdapter<Hotel, HotelsRecyclerAdapter.ItemViewHo
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+        holder.bind(item)
+        holder.itemView.setOnClickListener {
+            clickListener.onHotelClick(item.id)
+        }
     }
 
     inner class ItemViewHolder(private val binding: RecyclerHotelItemBinding): RecyclerView.ViewHolder(binding.root) {

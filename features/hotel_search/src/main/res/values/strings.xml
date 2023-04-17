@@ -7,4 +7,9 @@
     <string name="sort">Sort</string>
     <string name="distance_to_center">По расстоянию до центра</string>
     <string name="by_free_places_amount">По количеству свободных мест</string>
+    <string name="s">Отель: %s</string>
+    <string name="hotel_address">Адрес: %s</string>
+    <string name="distance_to_city_center">Расстояние до центра: %s</string>
+    <string name="free_places_in_hotel_details">Свободные номера: %s</string>
+    <string name="choose_place">Выбрать номер</string>
 </resources>

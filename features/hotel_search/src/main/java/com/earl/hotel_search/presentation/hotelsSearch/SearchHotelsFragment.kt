@@ -11,16 +11,18 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
+import com.earl.common.log
 import com.earl.coreui.BaseFragment
 import com.earl.hotel_search.R
 import com.earl.hotel_search.databinding.FragmentSeatchHotelsBinding
 import com.earl.hotel_search.di.SearchHotelsComponentViewModel
 import com.earl.hotel_search.presentation.hotelsSearch.utils.HotelsRecyclerAdapter
+import com.earl.hotel_search.presentation.hotelsSearch.utils.OnHotelClickListener
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
+class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>(), OnHotelClickListener {
 
     @Inject
     internal lateinit var searchAirportsViewModelFactory: dagger.Lazy<SearchHotelsViewModel.Factory>
@@ -67,12 +69,16 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
     }
 
     private fun initHotelsRecycler() {
-        val adapter = HotelsRecyclerAdapter()
+        val adapter = HotelsRecyclerAdapter(this)
         binding.hotelsRecycler.adapter = adapter
         viewModel.hotels.onEach { hotelsList ->
             binding.progressBar.isVisible = hotelsList.isEmpty()
             adapter.submitList(hotelsList)
         }.launchIn(lifecycleScope)
+    }
+
+    override fun onHotelClick(hotelId: Int) {
+
     }
 
     companion object {
