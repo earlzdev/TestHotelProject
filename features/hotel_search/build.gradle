@@ -67,9 +67,13 @@ dependencies {
     implementation NavigationComponent.navComponentUi
 
     // tests
-    implementation TestDependencies.junit
-    implementation TestDependencies.androidJunit
-    implementation TestDependencies.androidEspresso
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.androidJunit
+    testImplementation TestDependencies.androidEspresso
+    testImplementation TestDependencies.mockito
+    testImplementation TestDependencies.ioMockito
+    testImplementation TestDependencies.kotlinMockito
+    testImplementation TestDependencies.coroutinesTests
 
     // glide
     implementation Glide.glide
