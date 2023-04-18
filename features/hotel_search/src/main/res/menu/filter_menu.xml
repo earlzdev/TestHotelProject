@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/distance_from_center"
+        android:orderInCategory="100"
+        android:title="@string/distance_to_center"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/free_places"
+        android:orderInCategory="100"
+        android:title="@string/by_free_places_amount"
+        app:showAsAction="never"/>
+</menu>

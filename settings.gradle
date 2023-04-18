@@ -14,3 +14,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TestHotelProject"
 include ':app'
+include ':features'
+include ':api'
+include ':core'
+include ':features:hotel_search'
+include ':core:coreUi'
+include ':core:common'
+include ':api:remoteDataSource'

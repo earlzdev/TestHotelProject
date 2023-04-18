@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.earl.hotel_search'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 26
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation project(":api:remoteDataSource")
+    implementation project(":core:common")
+    implementation project(":core:coreUi")
+
+    implementation Dependencies.core
+    implementation Dependencies.appCompat
+    implementation Dependencies.material
+    implementation Dependencies.constraintLayout
+
+    // dagger2
+    implementation Dagger2.dagger
+    kapt Dagger2.daggerCompiler
+
+    // lifecycle
+    implementation LifecycleComponents.coroutines
+    implementation LifecycleComponents.viewModel
+    implementation LifecycleComponents.fragment
+    implementation LifecycleComponents.lifecycleRuntime
+    implementation LifecycleComponents.serialization
+
+    // retrofit
+    implementation Retrofit.retrofit
+    implementation Retrofit.retrofitGsonConverter
+    implementation Retrofit.retrofitCoroutineAdapter
+    implementation Retrofit.okHttpLoggingInterceptor
+
+    // navComponent
+    implementation NavigationComponent.navComponentFragment
+    implementation NavigationComponent.navComponentUi
+
+    // tests
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.androidJunit
+    testImplementation TestDependencies.androidEspresso
+    testImplementation TestDependencies.mockito
+    testImplementation TestDependencies.ioMockito
+    testImplementation TestDependencies.kotlinMockito
+    testImplementation TestDependencies.coroutinesTests
+
+    // glide
+    implementation Glide.glide
+    implementation Glide.glideTransformation
+
+    // osmand
+    implementation 'org.osmdroid:osmdroid-android:6.1.16'
+}
