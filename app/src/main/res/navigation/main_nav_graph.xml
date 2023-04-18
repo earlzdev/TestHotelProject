@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/searchHotelsFragment">
+
+    <fragment
+        android:id="@+id/hotelDetailsFragment"
+        android:name="com.earl.hotel_search.presentation.hotelDetails.HotelDetailsFragment"
+        android:label="HotelDetailsFragment"
+        tools:layout="@layout/fragment_hotel_details">
+        <deepLink
+            app:uri="android-app://com.earl.hotel_search.presentation/HotelDetailsFragment/{hotelId}" />
+        <argument android:name="hotelId" app:argType="integer"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchHotelsFragment"
+        android:name="com.earl.hotel_search.presentation.hotelsSearch.SearchHotelsFragment"
+        android:label="SearchHotelsFragment"
+        tools:layout="@layout/fragment_seatch_hotels">
+    </fragment>
+
+</navigation>

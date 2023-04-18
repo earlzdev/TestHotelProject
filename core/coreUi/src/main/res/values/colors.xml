@@ -13,4 +13,5 @@
     <color name="search_hotels_text_color">#FF000000</color>
     <color name="theme_status_bar_color">#FFFFFFFF</color>
     <color name="filter_btn_backgroun_color">#ACACAC</color>
+    <color name="onbackgroundColor">#FF000000</color>
 </resources>

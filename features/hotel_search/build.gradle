@@ -62,8 +62,23 @@ dependencies {
     implementation Retrofit.retrofitCoroutineAdapter
     implementation Retrofit.okHttpLoggingInterceptor
 
+    // navComponent
+    implementation NavigationComponent.navComponentFragment
+    implementation NavigationComponent.navComponentUi
+
     // tests
-    implementation TestDependencies.junit
-    implementation TestDependencies.androidJunit
-    implementation TestDependencies.androidEspresso
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.androidJunit
+    testImplementation TestDependencies.androidEspresso
+    testImplementation TestDependencies.mockito
+    testImplementation TestDependencies.ioMockito
+    testImplementation TestDependencies.kotlinMockito
+    testImplementation TestDependencies.coroutinesTests
+
+    // glide
+    implementation Glide.glide
+    implementation Glide.glideTransformation
+
+    // osmand
+    implementation 'org.osmdroid:osmdroid-android:6.1.16'
 }

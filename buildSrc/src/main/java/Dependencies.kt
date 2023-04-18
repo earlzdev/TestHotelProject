@@ -1,3 +1,7 @@
+import Versions.ioMockitoVersion
+import Versions.mockitoKotlin
+import Versions.mockitoVersion
+
 object Versions {
     const val core = "1.7.0"
     const val appCompat = "1.6.1"
@@ -18,9 +22,14 @@ object Versions {
     const val serialization = "1.4.1"
     const val roundImages = "2.3.0"
     const val glide = "4.15.0"
+    const val glideTransformations = "4.3.0"
     const val cicerone = "7.1"
     const val navComponent = "2.5.3"
     const val workManagerVersion = "2.8.0"
+    const val mockitoVersion = "5.3.0"
+    const val ioMockitoVersion = "1.4.1"
+    const val mockitoKotlin = "4.1.0"
+    const val coroutinesTest = "1.5.0"
 }
 
 object Dependencies {
@@ -34,6 +43,10 @@ object TestDependencies {
     const val junit = "junit:junit:${Versions.junit}"
     const val androidJunit = "androidx.test.ext:junit:${Versions.androidJunit}"
     const val androidEspresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val mockito = "org.mockito:mockito-core:$mockitoVersion"
+    const val kotlinMockito = "org.mockito.kotlin:mockito-kotlin:$mockitoKotlin"
+    const val ioMockito = "io.mockk:mockk:$ioMockitoVersion"
+    const val coroutinesTests = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
 }
 
 object Dagger2 {
@@ -70,6 +83,7 @@ object RoundImages {
 object Glide {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}:"
+    const val glideTransformation = "jp.wasabeef:glide-transformations:${Versions.glideTransformations}"
 }
 
 object Cicerone {

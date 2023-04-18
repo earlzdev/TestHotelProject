@@ -6,21 +6,30 @@ import android.os.Bundle
 import android.view.*
 import android.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.earl.common.log
 import com.earl.coreui.BaseFragment
+import com.earl.coreui.NavigationUri
 import com.earl.hotel_search.R
 import com.earl.hotel_search.databinding.FragmentSeatchHotelsBinding
 import com.earl.hotel_search.di.SearchHotelsComponentViewModel
 import com.earl.hotel_search.presentation.hotelsSearch.utils.HotelsRecyclerAdapter
+import com.earl.hotel_search.presentation.hotelsSearch.utils.OnHotelClickListener
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
+class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>(), OnHotelClickListener {
 
     @Inject
     internal lateinit var searchAirportsViewModelFactory: dagger.Lazy<SearchHotelsViewModel.Factory>
@@ -48,10 +57,10 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
     }
 
     private fun initActionBar() {
-        with(binding.actionBar!!) {
+        with(binding.actionBar) {
             title = requireContext().getString(R.string.hotels_search)
             setTitleTextColor(context.getColor(com.earl.coreui.R.color.search_hotels_text_color))
-            binding.filter?.setOnClickListener {
+            binding.filter.setOnClickListener {
                 val popupMenu = PopupMenu(requireContext(), binding.filter)
                 popupMenu.menuInflater.inflate(R.menu.filter_menu, popupMenu.menu)
                 popupMenu.setOnMenuItemClickListener { item ->
@@ -67,7 +76,7 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
     }
 
     private fun initHotelsRecycler() {
-        val adapter = HotelsRecyclerAdapter()
+        val adapter = HotelsRecyclerAdapter(this)
         binding.hotelsRecycler.adapter = adapter
         viewModel.hotels.onEach { hotelsList ->
             binding.progressBar.isVisible = hotelsList.isEmpty()
@@ -75,7 +84,13 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>() {
         }.launchIn(lifecycleScope)
     }
 
-    companion object {
-        fun newInstance() = SearchHotelsFragment()
+    override fun onHotelClick(hotelId: Int) {
+        val request = NavDeepLinkRequest.Builder
+            .fromUri(
+                NavigationUri.HotelDetailsFragmentTransaction(NavigationUri.hotelsSearchToHotelDetails)
+                    .moveToHotelDetailsFragment(hotelId).toUri()
+            )
+            .build()
+        findNavController().navigate(request)
     }
 }

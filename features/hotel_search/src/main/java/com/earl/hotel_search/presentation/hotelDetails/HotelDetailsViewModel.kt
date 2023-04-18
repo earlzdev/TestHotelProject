@@ -5,16 +5,25 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.earl.common.Feature
 import com.earl.hotel_search.domain.Repository
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.stateIn
+import com.earl.hotel_search.domain.models.HotelDetails
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
 
 class HotelDetailsViewModel(
     private val repository: Repository
 ): ViewModel() {
+
+    private val _hotelDetails: MutableStateFlow<HotelDetails?> = MutableStateFlow(null)
+    val hotelDetails: StateFlow<HotelDetails?> = _hotelDetails.asStateFlow()
+
+    fun fetchHotelDetails(hotelId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _hotelDetails.value = repository.fetchHotelInfo(hotelId)
+        }
+    }
 
     @Feature
     class Factory @Inject constructor(
