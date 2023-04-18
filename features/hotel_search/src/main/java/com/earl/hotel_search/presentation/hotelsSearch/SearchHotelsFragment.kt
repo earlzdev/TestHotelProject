@@ -57,10 +57,10 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>(), OnHotel
     }
 
     private fun initActionBar() {
-        with(binding.actionBar!!) {
+        with(binding.actionBar) {
             title = requireContext().getString(R.string.hotels_search)
             setTitleTextColor(context.getColor(com.earl.coreui.R.color.search_hotels_text_color))
-            binding.filter?.setOnClickListener {
+            binding.filter.setOnClickListener {
                 val popupMenu = PopupMenu(requireContext(), binding.filter)
                 popupMenu.menuInflater.inflate(R.menu.filter_menu, popupMenu.menu)
                 popupMenu.setOnMenuItemClickListener { item ->
@@ -92,9 +92,5 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>(), OnHotel
             )
             .build()
         findNavController().navigate(request)
-    }
-
-    companion object {
-        fun newInstance() = SearchHotelsFragment()
     }
 }
