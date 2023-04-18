@@ -22,21 +22,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:paddingVertical="4dp">
 
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/filter"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/sort"-->
-<!--            android:textColor="@color/search_hotels_text_color"-->
-<!--            android:fontFamily="@font/montserrat_regular"-->
-<!--            android:textSize="12sp"-->
-<!--            android:background="@drawable/filter_btn_background"-->
-<!--            android:padding="6dp"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:layout_marginEnd="@dimen/medium"-->
-<!--            />-->
-<!--        -->
-
         <ImageButton
             android:id="@+id/filter"
             android:layout_width="wrap_content"

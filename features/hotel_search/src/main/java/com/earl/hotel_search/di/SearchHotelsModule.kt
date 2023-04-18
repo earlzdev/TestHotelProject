@@ -18,11 +18,13 @@ class SearchHotelsModule {
     @Provides
     fun provideRepository(
         networkService: NetworkService,
-        hotelRemoteToMainMapper: HotelRemoteToMainMapper<Hotel>
+        hotelRemoteToMainMapper: HotelRemoteToMainMapper<Hotel>,
+        hotelDetailsRemoteToMainMapper: HotelsDetailsRemoteMapper<HotelDetails>
     ): Repository {
         return RepositoryImpl(
             networkService,
-            hotelRemoteToMainMapper
+            hotelRemoteToMainMapper,
+            hotelDetailsRemoteToMainMapper
         )
     }
 

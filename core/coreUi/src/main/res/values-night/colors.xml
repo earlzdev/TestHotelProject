@@ -12,4 +12,5 @@
     <color name="no_places_btn_color">#868686</color>
     <color name="search_hotels_text_color">#FFFFFFFF</color>
     <color name="theme_status_bar_color">#FF000000</color>
+    <color name="onbackgroundColor">#FFFFFFFF</color>
 </resources>

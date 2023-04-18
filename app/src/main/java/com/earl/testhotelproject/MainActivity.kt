@@ -15,13 +15,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        showFragment()
-    }
-
-    private fun showFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, SearchHotelsFragment.newInstance())
-            .addToBackStack(null)
-            .commit()
     }
 }

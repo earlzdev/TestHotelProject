@@ -6,13 +6,20 @@ import android.os.Bundle
 import android.view.*
 import android.widget.PopupMenu
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.earl.common.log
 import com.earl.coreui.BaseFragment
+import com.earl.coreui.NavigationUri
 import com.earl.hotel_search.R
 import com.earl.hotel_search.databinding.FragmentSeatchHotelsBinding
 import com.earl.hotel_search.di.SearchHotelsComponentViewModel
@@ -78,7 +85,13 @@ class SearchHotelsFragment: BaseFragment<FragmentSeatchHotelsBinding>(), OnHotel
     }
 
     override fun onHotelClick(hotelId: Int) {
-
+        val request = NavDeepLinkRequest.Builder
+            .fromUri(
+                NavigationUri.HotelDetailsFragmentTransaction(NavigationUri.hotelsSearchToHotelDetails)
+                    .moveToHotelDetailsFragment(hotelId).toUri()
+            )
+            .build()
+        findNavController().navigate(request)
     }
 
     companion object {

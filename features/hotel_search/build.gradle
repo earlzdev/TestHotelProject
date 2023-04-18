@@ -62,8 +62,16 @@ dependencies {
     implementation Retrofit.retrofitCoroutineAdapter
     implementation Retrofit.okHttpLoggingInterceptor
 
+    // navComponent
+    implementation NavigationComponent.navComponentFragment
+    implementation NavigationComponent.navComponentUi
+
     // tests
     implementation TestDependencies.junit
     implementation TestDependencies.androidJunit
     implementation TestDependencies.androidEspresso
+
+    // glide
+    implementation Glide.glide
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
 }

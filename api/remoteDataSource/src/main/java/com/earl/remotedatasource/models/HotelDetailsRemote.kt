@@ -9,11 +9,11 @@ data class HotelDetailsRemote(
     @SerializedName("address") val address: String,
     @SerializedName("stars") val starts: Double,
     @SerializedName("distance") val distance: Double,
-    @SerializedName("image") val image: String,
+    @SerializedName("image") val image: String?,
     @SerializedName("suites_availability") val suites: String,
     @SerializedName("lat") val lat: Double,
     @SerializedName("lon")val long: Double
 ) {
     fun <T> map(mapper: HotelsDetailsRemoteMapper<T>) =
-        mapper.map(id, name, address, starts, distance, image, suites, lat, long)
+        mapper.map(id, name, address, starts, distance, image ?: "", suites, lat, long)
 }

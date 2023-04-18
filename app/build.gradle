@@ -58,6 +58,10 @@ dependencies {
     implementation Retrofit.retrofitCoroutineAdapter
     implementation Retrofit.okHttpLoggingInterceptor
 
+    // navComponent
+    implementation NavigationComponent.navComponentFragment
+    implementation NavigationComponent.navComponentUi
+
     // tests
     implementation TestDependencies.junit
     implementation TestDependencies.androidJunit
