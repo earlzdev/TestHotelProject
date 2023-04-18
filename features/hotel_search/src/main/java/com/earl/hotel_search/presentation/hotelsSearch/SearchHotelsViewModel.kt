@@ -21,7 +21,9 @@ class SearchHotelsViewModel(
 
     fun findHotels() {
         viewModelScope.launch(Dispatchers.IO) {
-            _hotels.value = repository.fetchHotels()
+            if (_hotels.value.isEmpty()) {
+                _hotels.value = repository.fetchHotels()
+            }
         }
     }
 
