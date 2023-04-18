@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.earl.hotel_search.searchHotelTests.testDomain.TestRepository" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-18T10:58:58" hostname="MacBook-Pro.local" time="1.56">
+  <properties/>
+  <testcase name="is fetch Hotels List Method returns Hotel model" classname="com.earl.hotel_search.searchHotelTests.testDomain.TestRepository" time="1.56"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

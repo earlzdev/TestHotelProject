@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/hotel_image"
+        app:layout_constraintBottom_toBottomOf="@id/hotel_image"
+        app:layout_constraintStart_toStartOf="@id/hotel_image"
+        app:layout_constraintEnd_toEndOf="@id/hotel_image"
+        />
+
+    <TextView
+        android:id="@+id/no_image_found_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seems_no_photo"
+        app:layout_constraintTop_toTopOf="@id/hotel_image"
+        app:layout_constraintBottom_toBottomOf="@id/hotel_image"
+        app:layout_constraintStart_toStartOf="@id/hotel_image"
+        app:layout_constraintEnd_toEndOf="@id/hotel_image"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/error_while_loading_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_while_loading_data"
+        app:layout_constraintTop_toTopOf="@id/hotel_image"
+        app:layout_constraintBottom_toBottomOf="@id/hotel_image"
+        app:layout_constraintStart_toStartOf="@id/hotel_image"
+        app:layout_constraintEnd_toEndOf="@id/hotel_image"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/hotel_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/medium"
+        android:layout_marginStart="@dimen/medium"
+        />
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/RatingBar"
+        app:layout_constraintTop_toBottomOf="@id/hotel_image"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/medium"
+        android:layout_marginStart="@dimen/medium"
+        />
+
+    <TextView
+        android:id="@+id/hotel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="350dp"
+        android:text="@string/s"
+        android:textSize="20sp"
+        android:textColor="@color/onbackgroundColor"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintTop_toBottomOf="@id/rating_bar"
+        app:layout_constraintStart_toStartOf="@id/rating_bar"
+        />
+
+    <TextView
+        android:id="@+id/hotel_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="350dp"
+        android:text="@string/hotel_address"
+        android:textSize="16sp"
+        android:textColor="@color/onbackgroundColor"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintTop_toBottomOf="@id/hotel_name"
+        app:layout_constraintStart_toStartOf="@id/hotel_name"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/hotel_distance_from_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/distance_to_city_center"
+        android:textSize="16sp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/onbackgroundColor"
+        app:layout_constraintTop_toBottomOf="@id/hotel_address"
+        app:layout_constraintStart_toStartOf="@id/hotel_name"
+        android:layout_marginTop="5dp"
+        />
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toBottomOf="@id/hotel_distance_from_center"
+        android:layout_marginVertical="20dp"
+        />
+
+    <TextView
+        android:id="@+id/free_places"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="200dp"
+        android:text="@string/free_places_in_hotel_details"
+        android:textSize="16sp"
+        android:textColor="@color/onbackgroundColor"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintTop_toBottomOf="@id/mapview"
+        app:layout_constraintStart_toStartOf="@id/hotel_name"
+        android:layout_marginTop="@dimen/medium"
+        android:layout_marginBottom="50dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/rent_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_place"
+        app:layout_constraintTop_toTopOf="@id/free_places"
+        app:layout_constraintBottom_toBottomOf="@id/free_places"
+        app:layout_constraintStart_toEndOf="@id/free_places"
+        android:layout_marginStart="@dimen/large"
+        android:background="@drawable/filter_btn_background"
+        android:padding="10dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

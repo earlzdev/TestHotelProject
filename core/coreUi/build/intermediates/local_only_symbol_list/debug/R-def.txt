@@ -1,0 +1,28 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color black_alpha50
+color filter_btn_backgroun_color
+color free_places_btn_color
+color no_places_btn_color
+color onbackgroundColor
+color purple_200
+color purple_500
+color purple_700
+color search_hotels_text_color
+color teal_200
+color teal_700
+color theme_status_bar_color
+color white
+dimen large
+dimen medium
+drawable back_arrow
+drawable filter_btn_background
+drawable filter_icon
+drawable free_places_btn_backgorund
+drawable hotel_image
+drawable no_places_btn_backgorund
+font montserrat_regular
+font montserrat_semibold
+font roboto_mediumitalic
+style RatingBar
