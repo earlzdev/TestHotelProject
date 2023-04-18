@@ -18,6 +18,7 @@ object Versions {
     const val serialization = "1.4.1"
     const val roundImages = "2.3.0"
     const val glide = "4.15.0"
+    const val glideTransformations = "4.3.0"
     const val cicerone = "7.1"
     const val navComponent = "2.5.3"
     const val workManagerVersion = "2.8.0"
@@ -70,6 +71,7 @@ object RoundImages {
 object Glide {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}:"
+    const val glideTransformation = "jp.wasabeef:glide-transformations:${Versions.glideTransformations}"
 }
 
 object Cicerone {

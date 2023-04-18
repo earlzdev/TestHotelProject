@@ -19,13 +19,19 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
+import com.earl.common.CommonProperties
 import com.earl.coreui.BaseFragment
 import com.earl.coreui.GlideLoadingLinks
+import com.earl.coreui.cropImage
 import com.earl.hotel_search.R
 import com.earl.hotel_search.databinding.FragmentHotelDetailsBinding
 import com.earl.hotel_search.di.SearchHotelsComponentViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.osmdroid.api.IMapController
+import org.osmdroid.config.Configuration
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.overlay.Marker
 import javax.inject.Inject
 
 class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
@@ -50,9 +56,14 @@ class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initMap()
         fetchHotelDetails()
         initHotelInfo()
         binding.backBtn.setOnClickListener { findNavController().popBackStack() }
+    }
+
+    private fun initMap() {
+        Configuration.getInstance().userAgentValue = CommonProperties.appId
     }
 
     private fun fetchHotelDetails() {
@@ -93,14 +104,14 @@ class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
                                 dataSource: DataSource?,
                                 isFirstResource: Boolean
                             ): Boolean {
-                                cropImage(resource!!)
+                                binding.hotelImage.setImageBitmap(cropImage(resource!!, 2, 2))
                                 return true
                             }
                         })
                         .centerCrop()
                         .into(object : CustomTarget<Bitmap>() {
                             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                                cropImage(resource)
+                                binding.hotelImage.setImageBitmap(cropImage(resource, 2, 2))
                             }
                             override fun onLoadCleared(placeholder: Drawable?) {}
                         })
@@ -109,16 +120,15 @@ class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
                     binding.progressBar.visibility = View.GONE
                     binding.noImageFoundText.visibility = View.VISIBLE
                 }
+                val startPoint = GeoPoint(hotelDetails.lat, hotelDetails.long)
+                val mapController: IMapController = binding.mapview.controller
+                mapController.setZoom(8.0)
+                mapController.setCenter(startPoint)
+                val marker = Marker(binding.mapview)
+                marker.position = GeoPoint(hotelDetails.lat, hotelDetails.long)
+                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                binding.mapview.overlays.add(marker)
             }
         }.launchIn(lifecycleScope)
-    }
-
-    private fun cropImage(resource: Bitmap) {
-        val width = resource.width
-        val height = resource.height
-        val newWidth = width - 2
-        val newHeight = height - 2
-        val croppedBitmap = Bitmap.createBitmap(resource, 1, 1, newWidth, newHeight)
-        binding.hotelImage.setImageBitmap(croppedBitmap)
     }
 }
