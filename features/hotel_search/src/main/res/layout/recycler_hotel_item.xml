@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="@dimen/medium">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hotel_image">
+
+        <View
+            android:id="@+id/dark_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/black_alpha50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/distance_from_center"
+            />
+
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/medium"
+            style="@style/RatingBar"
+            />
+
+        <TextView
+            android:id="@+id/hotel_name"
+            android:layout_width="wrap_content"
+            android:maxWidth="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hotel_title"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/rating_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/medium"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/distance_from_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/distance_from_center_text"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="@font/montserrat_regular"
+            app:layout_constraintTop_toBottomOf="@id/hotel_name"
+            app:layout_constraintStart_toStartOf="@id/hotel_name"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="10dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/free_places_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/free_places"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_mediumitalic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/medium"
+            android:layout_marginEnd="@dimen/medium"
+            android:background="@drawable/free_places_btn_backgorund"
+            android:padding="10dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/no_places_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_places"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_mediumitalic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/medium"
+            android:layout_marginEnd="@dimen/medium"
+            android:background="@drawable/no_places_btn_backgorund"
+            android:padding="10dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
