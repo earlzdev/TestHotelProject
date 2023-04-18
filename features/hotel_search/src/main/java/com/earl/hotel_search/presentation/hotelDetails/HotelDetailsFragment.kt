@@ -20,6 +20,7 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.earl.common.CommonProperties
+import com.earl.coreui.ArgumentConstants
 import com.earl.coreui.BaseFragment
 import com.earl.coreui.GlideLoadingLinks
 import com.earl.coreui.cropImage
@@ -67,7 +68,7 @@ class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
     }
 
     private fun fetchHotelDetails() {
-        arguments?.getInt("hotelId").let {hotelId ->
+        arguments?.getInt(ArgumentConstants.hotelId).let {hotelId ->
             if (hotelId != null) {
                 viewModel.fetchHotelDetails(hotelId)
             }
@@ -104,14 +105,14 @@ class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
                                 dataSource: DataSource?,
                                 isFirstResource: Boolean
                             ): Boolean {
-                                binding.hotelImage.setImageBitmap(cropImage(resource!!, 2, 2))
+                                binding.hotelImage.setImageBitmap(cropImage(resource!!, croppedValue, croppedValue))
                                 return true
                             }
                         })
                         .centerCrop()
                         .into(object : CustomTarget<Bitmap>() {
                             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                                binding.hotelImage.setImageBitmap(cropImage(resource, 2, 2))
+                                binding.hotelImage.setImageBitmap(cropImage(resource, croppedValue, croppedValue))
                             }
                             override fun onLoadCleared(placeholder: Drawable?) {}
                         })
@@ -122,7 +123,7 @@ class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
                 }
                 val startPoint = GeoPoint(hotelDetails.lat, hotelDetails.long)
                 val mapController: IMapController = binding.mapview.controller
-                mapController.setZoom(8.0)
+                mapController.setZoom(defaultZoom)
                 mapController.setCenter(startPoint)
                 val marker = Marker(binding.mapview)
                 marker.position = GeoPoint(hotelDetails.lat, hotelDetails.long)
@@ -130,5 +131,10 @@ class HotelDetailsFragment: BaseFragment<FragmentHotelDetailsBinding>() {
                 binding.mapview.overlays.add(marker)
             }
         }.launchIn(lifecycleScope)
+    }
+
+    private companion object {
+        const val croppedValue = 2
+        const val defaultZoom = 8.0
     }
 }

@@ -15,11 +15,10 @@ class RepositoryImpl @Inject constructor(
     private val hotelDetailsRemoteToMainMapper: HotelsDetailsRemoteMapper<HotelDetails>
 ): Repository {
 
-    override suspend fun fetchHotels(): List<Hotel> {
-        return networkService.fetchHotels(NetworkConfig.Endpoints.HotelFetcherUrl.url).map {
+    override suspend fun fetchHotels(): List<Hotel> =
+        networkService.fetchHotels(NetworkConfig.Endpoints.HotelFetcherUrl.url).map {
             it.mapToMain(hotelRemoteToMainMapper)
         }
-    }
 
     override suspend fun fetchHotelInfo(id: Int): HotelDetails =
         networkService.fetchHotelDetails(NetworkConfig.Endpoints.HotelDetailsFetcherUrl(id).url)
